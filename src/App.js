@@ -5,7 +5,7 @@ import { Herro } from "./components/Herro";
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <main>
         <Herro />
         <Landing />

@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useState, useEffect } from "react";
 
 const StyledHerro = styled.section`
   background-color: #ff7143;
@@ -38,6 +39,7 @@ const StyledHerro = styled.section`
     background-image: url("./IMAGE.png");
     background-size: 417px 860px;
     background-position: bottom;
+    flex-shrink: 0;
   }
 `;
 const Button = styled.button`
@@ -54,6 +56,17 @@ const Button = styled.button`
 `;
 
 export const Herro = () => {
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    setWidth(document.documentElement.clientWidth);
+    window.addEventListener("resize", () => {
+      setWidth(document.documentElement.clientWidth);
+    });
+  }, []);
+
+  console.log(width);
+
   return (
     <StyledHerro>
       <div className="container">
@@ -73,7 +86,7 @@ export const Herro = () => {
           </div>
         </div>
 
-        <div className="wallpapers"></div>
+        {width > 1024 && <div className="wallpapers"></div>}
       </div>
     </StyledHerro>
   );
